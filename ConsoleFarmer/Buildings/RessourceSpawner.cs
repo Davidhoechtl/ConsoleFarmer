@@ -37,13 +37,11 @@ namespace ConsoleGame.Buildings
                     map
                 );
 
-                Cell toChange = map[rndPoint.X, rndPoint.Y];
-                toChange.Value = MapSymbols.Ressource;
-                toChange.RessourceValue = GetRessourceValue();
-                
+                map.PlaceResscouce(rndPoint, GetRessourceValue());
+
                 lastSpawn = DateTime.Now;
 
-                return new List<IRenderable>() { this, map, context.GetMenuItemByType<RessourceCounter>() };
+                return new List<IRenderable>() { this };
             }
 
             return new List<IRenderable>();

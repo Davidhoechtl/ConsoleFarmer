@@ -3,6 +3,7 @@ namespace ConsoleGame
 {
     using ConsoleGame.Infrastructure;
     using Newtonsoft.Json;
+    using System.Drawing;
 
     internal class Map : IRenderable
     {
@@ -55,6 +56,17 @@ namespace ConsoleGame
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        public void PlaceResscouce(Point pos, int resscourceValue)
+        {
+            Cell current = this[pos.X, pos.Y];
+            current.RessourceValue = resscourceValue;
+            current.Value = MapSymbols.Ressource;
+
+            Console.SetCursorPosition(pos.X, pos.Y);
+            Console.ForegroundColor = GetCellColorFromRessourceValue(current);
+            Console.Write(current.Value);
+        }
+
         public Cell this[int x, int y]
         {
             get => Cells[x, y];
@@ -76,5 +88,7 @@ namespace ConsoleGame
                     return ConsoleColor.Magenta;
             }
         }
+
+        private Map lastUpdate;
     }
 }

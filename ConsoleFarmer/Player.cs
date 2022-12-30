@@ -39,7 +39,7 @@ namespace ConsoleGame
             YPosition = startY;
 
 #if DEBUG
-            ressourceCount = 1000;
+            ressourceCount = 100000;
 #endif
         }
 
