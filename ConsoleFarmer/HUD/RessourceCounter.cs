@@ -34,7 +34,7 @@ namespace ConsoleGame.HUD
             {
                 Count = scoreUpdated;
                 ClearCommandLine();
-                return new List<IRenderable>() { this };
+                return new List<IRenderable>() { this, context.GetMenuItemByType<CurrentQuestDisplay>() };
             }
 
             return new List<IRenderable>();

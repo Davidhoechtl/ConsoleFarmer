@@ -49,7 +49,7 @@ namespace ConsoleGame.HUD
             {
                 GainPerSecond = gainSum;
                 Clear();
-                return new List<IRenderable>() { this };
+                return new List<IRenderable>() { this, };
             }
 
             return new List<IRenderable>();

@@ -1,6 +1,7 @@
 ﻿
 namespace ConsoleGame
 {
+    using ConsoleGame.Achievement;
     using ConsoleGame.Buildings;
     using ConsoleGame.HUD;
     using ConsoleGame.Infrastructure;
@@ -94,6 +95,7 @@ namespace ConsoleGame
 
                 ConsoleKeyBuffer.Flush();
 
+                List<IRenderable> needToRefresh = new() { this };
                 if (map[XPosition, YPosition].Value == MapSymbols.Ressource)
                 {
                     Cell ressourceCell = map[XPosition, YPosition];
@@ -102,9 +104,10 @@ namespace ConsoleGame
                     RessourceCount += ressourceCell.RessourceValue;
                     ressourceCell.Value = MapSymbols.Empty;
                     ressourceCell.RessourceValue = 0;
+
+                    needToRefresh.Add(state.GetMenuItemByType<CurrentQuestDisplay>());
                 }
 
-                List<IRenderable> needToRefresh = new() { this };
                 if(BuildingUnderPlayer != null )
                 {
                     needToRefresh.Add(BuildingUnderPlayer);

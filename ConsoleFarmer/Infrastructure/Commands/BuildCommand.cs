@@ -95,7 +95,7 @@ namespace ConsoleGame.Infrastructure.Commands
 
                 ClearCommandLine.Invoke();
                 SoundManager.PlayCommandEntered();
-                return new List<IRenderable>() { boughtBuilding, context.GetMenuItemByType<RessourceCounter>(), context.GetMenuItemByType<BuildingOptions>() };
+                return new List<IRenderable>() { boughtBuilding, context.GetMenuItemByType<RessourceCounter>(), context.GetMenuItemByType<BuildingOptions>(), context.GetMenuItemByType<CurrentQuestDisplay>() };
             }
 
             return new List<IRenderable>();
